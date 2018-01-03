@@ -14,5 +14,6 @@ pipeline {
       steps {
         sh 'ant run'
       }
+    }
   }
 }
