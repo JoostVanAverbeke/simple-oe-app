@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="MyProject">
+ <property environment="env" />
+ <property name="dist" location="target/oe"/>
+
+ <taskdef resource="PCT.properties" />
+ <typedef resource="types.properties" />
+
+ <target name="build" description="Builds source files">
+  <mkdir dir="${dist}" />
+  <PCTCompile destDir="target/oe" dlcHome="${env.DLC}">
+   <fileset dir="src/oe" includes="*.p" />
+  </PCTCompile>
+ </target>
+
+ <target name="run" description="run procedure try.p" depends="build">
+  <PCTRun procedure="target/oe/try.r" >
+    <propath>
+      <pathelement path="target/oe" />
+    </propath>
+  </PCTRun>
+ </target>
+
+ <target name="clean" description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+   <delete dir="${dist}"/>
+  </target>
+</project>
