@@ -10,5 +10,9 @@ pipeline {
         sh 'ant build'
       }
     }
+    stage('Run') {
+      steps {
+        sh 'ant run'
+      }
   }
 }
